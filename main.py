@@ -3,6 +3,7 @@ import urllib3
 import ssl
 from dotenv import load_dotenv
 import os
+from datetime import date
 
 ssl._create_default_https_context = ssl._create_unverified_context
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -26,10 +27,14 @@ months = {
     '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dec'
 }
 
+today = date.today()
+today_str = str(date.today())
+
 for match in matches:
     if match["homeTeam"]["name"] is not None:
-        date =  match["utcDate"].split("T")[0]
-        parts = date.split("-")
-        day = parts[2]
-        month = months[parts[1]]
-        print(f'{day} {month} | {match["homeTeam"]["name"]} vs {match["awayTeam"]["name"]}')
+        match_date =  match["utcDate"].split("T")[0]
+        if match_date == today_str:
+            parts = match_date.split("-")
+            day = parts[2]
+            month = months[parts[1]]
+            print(f'{day} {month} | {match["homeTeam"]["name"]} vs {match["awayTeam"]["name"]}')
