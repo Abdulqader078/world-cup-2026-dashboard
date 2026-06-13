@@ -9,8 +9,10 @@
 <body>
     <h1>World Cup 2026 Dashboard</h1>
 <div class="fixtures-container">
+    <h2 class="section-title">Todays Matches</h2>
     {% for fixture in fixtures %}
-        <div class="fixture">
+        {% if fixture.is_today %}
+        <div class="fixture today">
             <span class="date">{{ fixture.date }}</span>
             <span class="teams">{{ fixture.home }} vs {{ fixture.away }}</span>
             {% if fixture.status == 'FINISHED' %}
@@ -19,7 +21,21 @@
                 <span class="status">{{ fixture.status }}</span>
             {% endif %}
         </div>
+        {% endif %}
     {% endfor %}
+
+    <h2 class="section-title">All Fixtures</h2>
+    {% for fixture in fixtures %}
+        <div class= "fixture">
+            <span class="date">{{ fixture.date }}</span>
+            <span class="teams">{{ fixture.home }} vs {{ fixture.away }}</span>
+            {% if fixture.status == 'FINISHED' %}
+                <span class="score">{{ fixture.home_score }} - {{ fixture.away_score }}</span>
+            {% else %}
+                <span class="status">{{ fixture.status }}</span>
+            {% endif %}
+        </div>
+        {% endfor %}
 </div>
 </body>
 </html>

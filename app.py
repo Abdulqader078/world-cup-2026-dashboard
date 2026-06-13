@@ -4,6 +4,7 @@ import urllib3
 import ssl
 from dotenv import load_dotenv
 import os
+from datetime import date
 
 
 app = Flask(__name__)
@@ -37,19 +38,20 @@ def index():
     "12": "Dec",
     }
     fixtures = []
+    today_str = str(date.today())
     for match in matches:
         if match["homeTeam"]["name"] is not None:
-                if match["status"] == "FINISHED":
-                    print(match["homeTeam"]["name"], match["score"]["fullTime"])
-        date_parts = match["utcDate"].split("T")[0].split("-")
-        formatted_date = f'{date_parts[2]} {months[date_parts[1]]}'
-        fixtures.append({
+            match_date = match["utcDate"].split("T")[0]
+            date_parts = match["utcDate"].split("T")[0].split("-")
+            formatted_date = f'{date_parts[2]} {months[date_parts[1]]}'
+            fixtures.append({
                 "date": formatted_date,
                 "home": match["homeTeam"]["name"],
                 "away": match["awayTeam"]["name"],
                 "status": "Upcoming" if match["status"] == "TIMED" else match["status"],
                 "home_score":match["score"]["fullTime"]["home"],
-                "away_score":match["score"]["fullTime"]["away"]
+                "away_score":match["score"]["fullTime"]["away"],
+                "is_today": match_date == today_str
             })
 
     return render_template('index.html', fixtures=fixtures)

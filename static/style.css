@@ -64,3 +64,13 @@ h1 {
     color: #6A0DAD;
     font-size: 0.85rem;
 }
+.section-title {
+    color: #ffffff;
+    margin: 30px 0 15px 0;
+    font-size: 1.3rem;
+}
+
+.fixture.today {
+    border-left-color: #E8182C;
+    background-color: #1f0a0a;
+}
