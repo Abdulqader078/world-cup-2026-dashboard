@@ -56,7 +56,9 @@ def index():
                 "home_score":match["score"]["fullTime"]["home"],
                 "away_score":match["score"]["fullTime"]["away"],
                 "is_today": match_date == today_str,
-                "time": corrected_time
+                "time": corrected_time,
+                "home_crest": match["homeTeam"]["crest"],
+                "away_crest": match["awayTeam"]["crest"]
             })
 
     return render_template('index.html', fixtures=fixtures)

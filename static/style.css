@@ -82,3 +82,10 @@ h1 {
     min-width: 80px;
     text-align: center;
 }
+
+.flag {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    vertical-align: middle;
+}

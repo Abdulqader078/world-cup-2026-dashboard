@@ -15,7 +15,12 @@
         <div class="fixture today">
             <span class="date">{{ fixture.date }}</span>
             <span class="time">{{ fixture.time }}</span>
-            <span class="teams">{{ fixture.home }} vs {{ fixture.away }}</span>
+            <span class="teams">
+            <img src="{{ fixture.home_crest }}" class="flag"> 
+            {{ fixture.home }} vs 
+            <img src="{{ fixture.away_crest }}" class="flag">
+            {{ fixture.away }}
+</span>
             {% if fixture.status == 'FINISHED' %}
                 <span class="score">{{ fixture.home_score }} - {{ fixture.away_score }}</span>
             {% else %}
@@ -30,7 +35,12 @@
         <div class= "fixture">
             <span class="date">{{ fixture.date }}</span>
             <span class="time">{{ fixture.time }}</span>
-            <span class="teams">{{ fixture.home }} vs {{ fixture.away }}</span>
+            <span class="teams">
+            <img src="{{ fixture.home_crest }}" class="flag"> 
+            {{ fixture.home }} vs 
+            <img src="{{ fixture.away_crest }}" class="flag">
+            {{ fixture.away }}
+</span>
             {% if fixture.status == 'FINISHED' %}
                 <span class="score">{{ fixture.home_score }} - {{ fixture.away_score }}</span>
             {% else %}
