@@ -45,15 +45,16 @@ h1 {
 .date {
     color: #A8D400;
     font-size: 0.9rem;
-    min-width: 60px;
+    min-width: 80px;
 }
 
 .teams {
     font-size: 1rem;
     font-weight: bold;
     color: #ffffff;
+    flex: 1;
+    text-align: center;
 }
-
 .score {
     color: #A8D400;
     font-weight: bold;
@@ -73,4 +74,11 @@ h1 {
 .fixture.today {
     border-left-color: #E8182C;
     background-color: #1f0a0a;
+}
+
+.time {
+    color: #ffffff;
+    font-size: 0.9rem;
+    min-width: 80px;
+    text-align: center;
 }

@@ -14,6 +14,7 @@
         {% if fixture.is_today %}
         <div class="fixture today">
             <span class="date">{{ fixture.date }}</span>
+            <span class="time">{{ fixture.time }}</span>
             <span class="teams">{{ fixture.home }} vs {{ fixture.away }}</span>
             {% if fixture.status == 'FINISHED' %}
                 <span class="score">{{ fixture.home_score }} - {{ fixture.away_score }}</span>
@@ -28,6 +29,7 @@
     {% for fixture in fixtures %}
         <div class= "fixture">
             <span class="date">{{ fixture.date }}</span>
+            <span class="time">{{ fixture.time }}</span>
             <span class="teams">{{ fixture.home }} vs {{ fixture.away }}</span>
             {% if fixture.status == 'FINISHED' %}
                 <span class="score">{{ fixture.home_score }} - {{ fixture.away_score }}</span>
