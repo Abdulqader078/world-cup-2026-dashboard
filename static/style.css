@@ -53,3 +53,14 @@ h1 {
     font-weight: bold;
     color: #ffffff;
 }
+
+.score {
+    color: #A8D400;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.status {
+    color: #6A0DAD;
+    font-size: 0.85rem;
+}

@@ -13,6 +13,11 @@
         <div class="fixture">
             <span class="date">{{ fixture.date }}</span>
             <span class="teams">{{ fixture.home }} vs {{ fixture.away }}</span>
+            {% if fixture.status == 'FINISHED' %}
+                <span class="score">{{ fixture.home_score }} - {{ fixture.away_score }}</span>
+            {% else %}
+                <span class="status">{{ fixture.status }}</span>
+            {% endif %}
         </div>
     {% endfor %}
 </div>

@@ -39,15 +39,19 @@ def index():
     fixtures = []
     for match in matches:
         if match["homeTeam"]["name"] is not None:
-            date_parts = match["utcDate"].split("T")[0].split("-")
-            formatted_date = f'{date_parts[2]} {months[date_parts[1]]}'
-            fixtures.append({
+                if match["status"] == "FINISHED":
+                    print(match["homeTeam"]["name"], match["score"]["fullTime"])
+        date_parts = match["utcDate"].split("T")[0].split("-")
+        formatted_date = f'{date_parts[2]} {months[date_parts[1]]}'
+        fixtures.append({
                 "date": formatted_date,
                 "home": match["homeTeam"]["name"],
-                "away": match["awayTeam"]["name"]
+                "away": match["awayTeam"]["name"],
+                "status":match["status"],
+                "home_score":match["score"]["fullTime"]["home"],
+                "away_score":match["score"]["fullTime"]["away"]
             })
-            
-    return render_template('index.html', fixtures=fixtures)
 
+    return render_template('index.html', fixtures=fixtures)
 if __name__ == '__main__':
     app.run(debug=True)
