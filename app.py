@@ -47,7 +47,7 @@ def index():
                 "date": formatted_date,
                 "home": match["homeTeam"]["name"],
                 "away": match["awayTeam"]["name"],
-                "status":match["status"],
+                "status": "Upcoming" if match["status"] == "TIMED" else match["status"],
                 "home_score":match["score"]["fullTime"]["home"],
                 "away_score":match["score"]["fullTime"]["away"]
             })
