@@ -8,6 +8,23 @@
 </head>
 <body>
     <h1>World Cup 2026 Dashboard</h1>
+    {% set live_fixtures = fixtures | selectattr("status", "equalto", "Live") | list %}
+    {% if live_fixtures %}
+    <h2 class="section-title live-title">🔴 Live Now</h2>
+        {% for fixture in live_fixtures %}
+        <div class="fixture live-match">
+        <span class="date">{{ fixture.date }}</span>
+        <span class="time">{{ fixture.time }}</span>
+        <span class="teams">
+            <img src="{{ fixture.home_crest }}" class="flag">
+            {{ fixture.home }} vs
+            <img src="{{ fixture.away_crest }}" class="flag">
+            {{ fixture.away }}
+        </span>
+        <span class="live">🔴 Live</span>
+    </div>
+{% endfor %}
+{% endif %}
 <div class="fixtures-container">
     <h2 class="section-title">Todays Matches</h2>
     {% for fixture in fixtures %}
@@ -41,7 +58,9 @@
             <img src="{{ fixture.away_crest }}" class="flag">
             {{ fixture.away }}
 </span>
-            {% if fixture.status == 'FINISHED' %}
+            {% if fixture.status == 'Live' %}
+                <span class="live">🔴 Live</span>
+            {% elif fixture.status == 'FINISHED' %}
                 <span class="score">{{ fixture.home_score }} - {{ fixture.away_score }}</span>
             {% else %}
                 <span class="status">{{ fixture.status }}</span>

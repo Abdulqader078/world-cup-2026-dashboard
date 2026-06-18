@@ -52,15 +52,16 @@ def index():
                 "date": formatted_date,
                 "home": match["homeTeam"]["name"],
                 "away": match["awayTeam"]["name"],
-                "status": "Upcoming" if match["status"] == "TIMED" else match["status"],
+                "status": "Live" if match["status"] == "IN_PLAY" or match["status"] == "PAUSED" else "Upcoming" if match["status"] == "TIMED" else match["status"],
                 "home_score":match["score"]["fullTime"]["home"],
                 "away_score":match["score"]["fullTime"]["away"],
                 "is_today": match_date == today_str,
                 "time": corrected_time,
                 "home_crest": match["homeTeam"]["crest"],
-                "away_crest": match["awayTeam"]["crest"]
+                "away_crest": match["awayTeam"]["crest"],
+                "group": match["group"]
             })
-
+    groups = sorted(set(f["group"] for f in fixtures if f["group"] is not None))
     return render_template('index.html', fixtures=fixtures)
 if __name__ == '__main__':
     app.run(debug=True)

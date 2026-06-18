@@ -22,7 +22,7 @@ h1 {
 .fixtures-container {
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -88,4 +88,26 @@ h1 {
     height: 24px;
     object-fit: contain;
     vertical-align: middle;
+}
+
+.live {
+    color: #E8182C;
+    font-weight: bold;
+    font-size: 0.85rem;
+    animation: blink 1s infinite;
+}
+
+.live-title {
+    color: #E8182C;
+}
+
+.fixture.live-match {
+    border-left-color: #E8182C;
+    background-color: #1f0a0a;
+    box-shadow: 0 0 10px rgba(232, 24, 44, 0.3);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
 }
